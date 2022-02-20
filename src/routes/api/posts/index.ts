@@ -13,9 +13,18 @@ export const posts = Object.entries(files).map(([k, e]) => {
   };
 });
 
+const size = 10;
+
 export const get: RequestHandler = async ({ url }) => {
-  const page = Number(url.searchParams.get('page') ?? 0);
+  const page = Number(url.searchParams.get('p') ?? 0);
+  const cursor = page * size;
   return {
-    body: posts.slice(page * 10, 10),
+    body: {
+      page: {
+        total: Math.floor(posts.length / 10),
+        current: page,
+      },
+      data: posts.slice(cursor, cursor + size),
+    },
   };
 };

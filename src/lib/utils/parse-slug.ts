@@ -7,7 +7,7 @@ export type SlugObject = {
 };
 
 export const parseSlug = (slug: string) => {
-  const matched = slug.match(/\.\.\/\.\.\/\.\.\/posts\/(.+)\/(\d{4})\-(\d{2})\-(\d{2})\-(.+)\.md/);
+  const matched = slug.match(/\.\.\/\.\.\/\.\.\/posts\/(.+)\/(\d{4})-(\d{2})-(\d{2})-(.+)\.md/);
 
   return matched.length > 1
     ? {
